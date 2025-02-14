@@ -8,12 +8,12 @@ $dbname = "basededados";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica se a conexão foi bem-sucedida
+
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-// Consulta para buscar os veículos disponíveis
+
 $sql = "SELECT matricula, marca, modelo, data_de_aquisicao FROM Veiculo";
 $result = $conn->query($sql);
 ?>
