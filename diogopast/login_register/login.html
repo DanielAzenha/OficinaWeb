@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Oficina Auto</title>
+    <link rel="stylesheet" href="login_register.css"> <!-- Corrigido o link do CSS -->
+    <script defer src="login.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Usuário ou Email:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+        <p id="mensagem-erro" class="erro"></p>
+        <a href="register.html" class="link">Criar conta</a> | <a href="forgot_password.html" class="link">Esqueci a senha</a>
+    </div>
+</body>
+</html>
