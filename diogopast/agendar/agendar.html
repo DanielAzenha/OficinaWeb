@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Serviço - Oficina Auto</title>
+    <link rel="stylesheet" href="agendar.css">
+    <script defer src="agendar.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Agendar Serviço</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="form-container">
+            <h2>Marque o seu serviço</h2>
+            <form id="agendar-form">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+                
+                <label for="servico">Serviço desejado:</label>
+                <select id="servico" name="servico" required>
+                    <option value="revisao">Revisão</option>
+                    <option value="troca-oleo">Troca de Óleo</option>
+                    <option value="pintura">Pintura</option>
+                    <option value="outro">Outro</option>
+                </select>
+                
+                <label for="data">Data desejada:</label>
+                <input type="date" id="data" name="data" required>
+                
+                <button type="submit">Confirmar Agendamento</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

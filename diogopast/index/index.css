@@ -1,0 +1,48 @@
+/* Reset básico */
+body, h1, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background: #0073e6;
+    color: white;
+    padding: 20px 0;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 16px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background: white;
+    color: #0073e6;
+    border-radius: 5px;
+}
