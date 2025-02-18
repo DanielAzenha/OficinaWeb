@@ -1,3 +1,4 @@
+
 CREATE TABLE Cliente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_nome VARCHAR(100) NOT NULL,
@@ -9,30 +10,13 @@ CREATE TABLE Cliente (
 CREATE TABLE Veiculo (
     matricula VARCHAR(100) PRIMARY KEY,
     marca VARCHAR(100) NOT NULL,
-    morada VARCHAR(100) NOT NULL,
     data_de_aquisicao DATE NOT NULL,
     modelo VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Historico_Veiculo (
-    matricula VARCHAR(100) PRIMARY KEY,
-    feito_em TIME NOT NULL,
-    data_servico DATE NOT NULL,
-    modelo VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE Orcamento (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cliente_id INT NOT NULL,
-    data_emissao DATE NOT NULL,
-    valor_total DECIMAL(10,2) NOT NULL,
-    status ENUM('Pendente', 'Aprovado', 'Rejeitado') NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES Cliente(id)
-);
 
 CREATE TABLE Orcamento_Item (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    orcamento_id INT NOT NULL,
     descricao VARCHAR(255) NOT NULL,
     quantidade INT NOT NULL,
     preco_unitario DECIMAL(10,2) NOT NULL,
@@ -64,22 +48,6 @@ CREATE TABLE Pedido_Fornecedor (
     status ENUM('Pendente', 'Recebido') NOT NULL
 );
 
-CREATE TABLE Pedido_Fornecedor_Item (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    pedido_id INT NOT NULL,
-    stock_id INT NOT NULL,
-    quantidade INT NOT NULL,
-    FOREIGN KEY (pedido_id) REFERENCES Pedido_Fornecedor(id),
-    FOREIGN KEY (stock_id) REFERENCES Stock(id)
-);
-
-CREATE TABLE Financeiro (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo ENUM('Receita', 'Despesa') NOT NULL,
-    descricao VARCHAR(255) NOT NULL,
-    valor DECIMAL(10,2) NOT NULL,
-    data_lancamento DATE NOT NULL
-);
 
 CREATE TABLE Funcionario (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -101,3 +69,37 @@ CREATE TABLE Relatorio (
     descricao TEXT NOT NULL,
     data_geracao DATE NOT NULL
 );
+
+INSERT INTO Veiculo (matricula, marca, data_de_aquisicao, modelo) VALUES
+('ABC-1234', 'Toyota', '2022-01-10', 'Corolla'),
+('XYZ-5678', 'Honda', '2021-06-20', 'Civic'),
+('DEF-9101', 'Ford', '2023-03-15', 'Focus');
+
+
+
+INSERT INTO Orcamento_Item (orcamento_id, descricao, quantidade, preco_unitario, subtotal) VALUES
+(1, 'Troca de óleo', 1, 150.00, 150.00),
+(1, 'Pastilhas de freio', 2, 200.00, 400.00),
+(2, 'Alinhamento e balanceamento', 1, 300.75, 300.75),
+(3, 'Troca de bateria', 1, 460.00, 460.00);
+(4, 'Filtro de oleo', 10, 25.00, 250.00),
+(6, 2, 'Filtro de ar', 8, 30.00, 240.00),
+(7, 2, 'Pastilhas de freio', 6, 150.00, 900.00),
+(8, 2, 'Disco de freio', 4, 220.00, 880.00),
+(9, 3, 'Velas de ignição', 12, 40.00, 480.00),
+(10, 3, 'Amortecedor', 5, 350.00, 1750.00),
+(11, 3, 'Bateria automotiva', 3, 460.00, 1380.00),
+(12, 3, 'Correia dentada', 7, 180.00, 1260.00),
+(13, 4, 'Bomba de combustível', 2, 500.00, 1000.00),
+(14, 4, 'Radiador', 1, 750.00, 750.00);
+
+INSERT INTO Funcionario (nome, cargo) VALUES
+('Pedro Almeida', 'Mecânico'),
+('Lucas Ribeiro', 'Gerente'),
+('Fernanda Souza', 'Atendente');
+
+
+
+INSERT INTO Stock (descricao, quantidade, preco, alerta_reposicao) VALUES
+('Óleo de motor 5W30', 50, 35.90, 10),
+
