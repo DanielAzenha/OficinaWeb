@@ -1,13 +1,14 @@
 <?php
-$host = "localhost"; 
-$user = "root";      
-$password = "";      
-$db = "basededados";   
+$host     = "localhost";
+$usuario  = "root";
+$senha    = "";
+$banco    = "basededados";
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erro de conexão: " . $e->getMessage());
+
+$conexao = new mysqli($host, $usuario, $senha, $banco);
+
+
+if ($conexao->connect_error) {
+    die("Falha na conexão: " . $conexao->connect_error);
 }
 ?>
