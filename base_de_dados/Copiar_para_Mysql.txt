@@ -1,4 +1,6 @@
 
+
+
 CREATE TABLE Cliente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_nome VARCHAR(100) NOT NULL,
@@ -7,30 +9,23 @@ CREATE TABLE Cliente (
     nacionalidade VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Veiculo (
-    matricula VARCHAR(100) PRIMARY KEY,
-    marca VARCHAR(100) NOT NULL,
-    data_de_aquisicao DATE NOT NULL,
-    modelo VARCHAR(50) NOT NULL
-);
-
 
 CREATE TABLE Orcamento_Item (
     id INT AUTO_INCREMENT PRIMARY KEY,
     descricao VARCHAR(255) NOT NULL,
     quantidade INT NOT NULL,
     preco_unitario DECIMAL(10,2) NOT NULL,
-    subtotal DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (orcamento_id) REFERENCES Orcamento(id)
+    subtotal DECIMAL(10,2) NOT NULL 
 );
+
 
 CREATE TABLE Ordem_Servico (
     id INT AUTO_INCREMENT PRIMARY KEY,
     orcamento_id INT NOT NULL,
     data_inicio DATE NOT NULL,
     data_prevista_termino DATE NOT NULL,
-    status ENUM('Aberta', 'Em Andamento', 'Concluída', 'Cancelada') NOT NULL,
-    FOREIGN KEY (orcamento_id) REFERENCES Orcamento(id)
+    status ENUM('Aberta', 'Em Andamento', 'Concluída', 'Cancelada') NOT NULL
+    
 );
 
 CREATE TABLE Stock (
@@ -70,6 +65,14 @@ CREATE TABLE Relatorio (
     data_geracao DATE NOT NULL
 );
 
+CREATE TABLE Veiculo (
+    matricula VARCHAR(100) PRIMARY KEY,
+    marca VARCHAR(100) NOT NULL,
+    data_de_aquisicao DATE NOT NULL,
+    modelo VARCHAR(50) NOT NULL
+);
+
+
 INSERT INTO Veiculo (matricula, marca, data_de_aquisicao, modelo) VALUES
 ('ABC-1234', 'Toyota', '2022-01-10', 'Corolla'),
 ('XYZ-5678', 'Honda', '2021-06-20', 'Civic'),
@@ -77,21 +80,18 @@ INSERT INTO Veiculo (matricula, marca, data_de_aquisicao, modelo) VALUES
 
 
 
-INSERT INTO Orcamento_Item (orcamento_id, descricao, quantidade, preco_unitario, subtotal) VALUES
-(1, 'Troca de óleo', 1, 150.00, 150.00),
-(1, 'Pastilhas de freio', 2, 200.00, 400.00),
-(2, 'Alinhamento e balanceamento', 1, 300.75, 300.75),
-(3, 'Troca de bateria', 1, 460.00, 460.00);
-(4, 'Filtro de oleo', 10, 25.00, 250.00),
-(6, 2, 'Filtro de ar', 8, 30.00, 240.00),
-(7, 2, 'Pastilhas de freio', 6, 150.00, 900.00),
-(8, 2, 'Disco de freio', 4, 220.00, 880.00),
-(9, 3, 'Velas de ignição', 12, 40.00, 480.00),
-(10, 3, 'Amortecedor', 5, 350.00, 1750.00),
-(11, 3, 'Bateria automotiva', 3, 460.00, 1380.00),
-(12, 3, 'Correia dentada', 7, 180.00, 1260.00),
-(13, 4, 'Bomba de combustível', 2, 500.00, 1000.00),
-(14, 4, 'Radiador', 1, 750.00, 750.00);
+INSERT INTO Orcamento_item (id,descricao, quantidade, preco_unitario, subtotal) Values
+
+(1, 'Filtro de oleo', 10, 25.00, 250.00),
+(2, 'Filtro de ar', 8, 30.00, 240.00),
+(3, 'Pastilhas de freio', 6, 150.00, 900.00),
+(4, 'Disco de freio', 4, 220.00, 880.00),
+(5, 'Velas de ignição', 12, 40.00, 480.00),
+(6,  'Amortecedor', 5, 350.00, 1750.00),
+(7, 'Bateria automotiva', 3, 460.00, 1380.00),
+(8,  'Correia dentada', 7, 180.00, 1260.00),
+(9,  'Bomba de combustível', 2, 500.00, 1000.00),
+(10,  'Radiador', 1, 750.00, 750.00);
 
 INSERT INTO Funcionario (nome, cargo) VALUES
 ('Pedro Almeida', 'Mecânico'),
